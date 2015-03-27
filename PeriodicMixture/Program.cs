@@ -53,7 +53,7 @@ namespace PeriodicMixture {
 
         samples.Add( sample );
         data [j] = sample;
-      }
+      } 
 
       System.IO.File.WriteAllText(
         "samples.json",
