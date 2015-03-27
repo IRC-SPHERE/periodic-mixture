@@ -1,0 +1,123 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq; 
+using MicrosoftResearch.Infer.Models;
+using MicrosoftResearch.Infer;
+using MicrosoftResearch.Infer.Distributions;
+using MicrosoftResearch.Infer.Maths;
+
+namespace PeriodicMixture {
+  class Program {
+    static void Main( string [] args ) {
+      // Define a range for the number of mixture components
+
+      Range k = new Range( 2 ).Named( "k" );
+
+      // Mixture component means
+      var means = Variable.Array<double>( k ).Named( "means" );
+      means [k] = Variable.GaussianFromMeanAndPrecision( 0.0, 1.0 ).ForEach( k );
+
+
+      // Mixture component precisions
+      var precs = Variable.Array<double>( k ).Named( "precs" );
+      precs [k] = Variable.GammaFromShapeAndScale( 1.0, 1.0 ).ForEach( k );
+
+      // Mixture weights 
+      var alpha = Variable.Dirichlet( k, Enumerable.Repeat( 1.0, k.SizeAsInt ).ToArray() ).Named( "alpha" );
+
+      // Create a variable array which will hold the data
+      Range n = new Range( 300 ).Named( "n" );
+      var data = Variable.Array<double>( n ).Named( "x" );
+      var z = Variable.Array<int>( n ).Named( "z" );
+
+      // The mixture of Gaussians model
+      using ( Variable.ForEach( n ) ) {
+        z [n] = Variable.Discrete( alpha );
+
+        using ( Variable.Switch( z [n] ) ) {
+          data [n] = Variable.GaussianFromMeanAndPrecision( means [z [n]], precs [z [n]] );
+        }
+      }
+
+      // Attach some generated data
+      var observedData = new List<double>( GenerateData( n.SizeAsInt ) );
+      
+      Console.WriteLine( "Max: {0}\nMin: {1}\n", observedData.Max(), observedData.Min() );
+      data.ObservedValue = observedData.ToArray(); 
+
+      // Initialise messages randomly so as to break symmetry
+      var zinit = new Discrete [n.SizeAsInt];
+      for ( int i = 0; i < zinit.Length; i++ )
+        zinit [i] = Discrete.PointMass( Rand.Int( k.SizeAsInt ), k.SizeAsInt );
+      z.InitialiseTo( Distribution<int>.Array( zinit ) );
+
+
+
+      // The inference
+      InferenceEngine ie = new InferenceEngine {
+        Algorithm = new ExpectationPropagation(),
+        NumberOfIterations = 50,
+        ShowFactorGraph = false
+      };
+
+      Console.WriteLine( "Dist over pi={0}", ie.Infer( alpha ) );
+      Console.WriteLine( "Dist over means=\n" + ie.Infer( means ) );
+      Console.WriteLine( "Dist over precs=\n" + ie.Infer( precs ) );
+    }
+
+
+    /// <summary>
+    /// Generates a data set from a particular true model.
+    /// </summary>
+    public static double [] GenerateData( int nData ) {
+      var trueM1 = 2.0;
+      var trueM2 = 7.0;
+
+      var trueP1 = 1.0;
+      var trueP2 = 1.0 / 3.0;
+
+      var trueVG1 = Gaussian.FromMeanAndPrecision( trueM1, trueP1 );
+      var trueVG2 = Gaussian.FromMeanAndPrecision( trueM2, trueP2 );
+
+      double truePi = 0.6;
+      Bernoulli trueB = new Bernoulli( truePi );
+
+      // Restart the infer.NET random number generator
+      Rand.Restart( 12347 );
+      var data = new double [nData];
+
+      for ( int j = 0; j < nData; j++ ) {
+        bool bSamp = trueB.Sample();
+        data [j] = bSamp ? trueVG1.Sample() : trueVG2.Sample();
+      }
+
+      return data;
+    }
+
+    public static double [] GeneratePeriodicData( int nData ) {
+      var trueM1 = 2.0;
+      var trueM2 = 7.0;
+
+      var trueP1 = 1.0;
+      var trueP2 = 0.5;
+
+      var trueVG1 = Gaussian.FromMeanAndPrecision( trueM1, trueP1 );
+      var trueVG2 = Gaussian.FromMeanAndPrecision( trueM2, trueP2 );
+
+      double truePi = 0.6;
+      Bernoulli trueB = new Bernoulli( truePi );
+
+      // Restart the infer.NET random number generator
+      Rand.Restart( 12347 );
+      var data = new double [nData];
+
+      for ( int j = 0; j < nData; j++ ) {
+        bool bSamp = trueB.Sample();
+        data [j] = bSamp ? trueVG1.Sample() : trueVG2.Sample();
+      }
+
+      return data;
+    }
+  }
+}

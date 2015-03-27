@@ -1,0 +1,12 @@
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\PeriodicMixture.exe.config
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\PeriodicMixture.exe
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\PeriodicMixture.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\Infer.Compiler.dll
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\Infer.Runtime.dll
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\Infer.Compiler.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\Infer.Compiler.xml
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\Infer.Runtime.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Release\Infer.Runtime.xml
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\obj\Release\PeriodicMixture.exe
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\obj\Release\PeriodicMixture.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\obj\Release\PeriodicMixture.csprojResolveAssemblyReference.cache

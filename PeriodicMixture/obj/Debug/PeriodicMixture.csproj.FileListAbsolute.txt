@@ -1,0 +1,14 @@
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\PeriodicMixture.exe.config
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\PeriodicMixture.exe
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\PeriodicMixture.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Infer.Compiler.dll
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Infer.Runtime.dll
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Infer.Compiler.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Infer.Compiler.xml
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Infer.Runtime.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Infer.Runtime.xml
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\obj\Debug\PeriodicMixture.csprojResolveAssemblyReference.cache
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\obj\Debug\PeriodicMixture.exe
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\obj\Debug\PeriodicMixture.pdb
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Newtonsoft.Json.dll
+C:\workspace\c#\PeriodicMixture\PeriodicMixture\bin\Debug\Newtonsoft.Json.xml
