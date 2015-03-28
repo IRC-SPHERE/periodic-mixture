@@ -96,7 +96,7 @@ namespace PeriodicMixture {
       // Break symmetry by evenly distributing means over the period
       var inity = new Gaussian [mixture_k.SizeAsInt];
       for ( int i = 0; i < mixture_k.SizeAsInt; ++i ) 
-        inity[i] = Gaussian.FromMeanAndVariance( i * period / ( mixture_k.SizeAsInt ), period );
+        inity[i] = Gaussian.FromMeanAndPrecision( i * period / ( mixture_k.SizeAsInt ), 1e-2 );
       mixture_means.InitialiseTo( Distribution<double>.Array( inity ) );
     }
 
