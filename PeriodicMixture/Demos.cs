@@ -63,7 +63,7 @@ namespace PeriodicMixture {
     }
 
     public static void PeriodicSingle4() {
-      var source = new PeriodicSingle{ N = N, Mean = new [] { 5.0 }, Variance = new [] { 16.0 }, Period = period };
+      var source = new PeriodicSingle{ N = N, Mean = new [] { 5.0 }, Variance = new [] { Math.Pow( 5, 2 ) }, Period = period };
       var wm = new WrappedMixture {
         source = source, 
         approximation_count = 3, 
@@ -74,7 +74,7 @@ namespace PeriodicMixture {
       wm.Infer(); 
       wm.Print(50); 
 
-      Console.WriteLine( "By approximating the wrapping as a mixture model (where we allow the model to place one component after and another before midnight), \nwe get better estimates, but the moments are still off because the wrapping wasn't accounted for." + "\n\n\n\n\n" );
+      Console.WriteLine( "Test it with large variance." + "\n\n\n\n\n" );
     }
 
     public static void PeriodicMixture1() {

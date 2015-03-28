@@ -69,7 +69,7 @@ namespace PeriodicMixture {
         Enumerable.Repeat( 1.0, mixture_k.SizeAsInt ).ToArray() 
       ).Named( "mixture_weights" );
 
-      mixture_means [mixture_k] = Variable.GaussianFromMeanAndPrecision( 0.0, 1e-4 ).ForEach( mixture_k );
+      mixture_means [mixture_k] = Variable.GaussianFromMeanAndPrecision( 0.0, 1e-2 ).ForEach( mixture_k );
       mixture_precisions [mixture_k] = Variable.GammaFromShapeAndScale( 1.0, 1.0 ).ForEach( mixture_k );
 
 

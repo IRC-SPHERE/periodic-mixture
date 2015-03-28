@@ -11,8 +11,7 @@ using Newtonsoft.Json;
 namespace PeriodicMixture {
   class Program {
     static void Main( string [] args ) {
-      //Demos.RunDemos(); 
-      Demos.PeriodicSingle4();
+      Demos.RunDemos(); 
     }
   }
 }
