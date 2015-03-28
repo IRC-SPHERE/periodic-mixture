@@ -37,8 +37,10 @@ namespace PeriodicMixture {
     }
 
     public void Infer() {
-      if ( approximation_count % 2 == 0 ) 
-        throw new Exception( "ERROR: approximation count should be odd (for symmetry about zero)" );
+      if ( approximation_count % 2 == 0 ) {
+        Console.WriteLine( "Warning: incrementing the approximation_count variable (should be odd, but is passed in as even)." );
+        approximation_count++; 
+      }
 
       // Dataset parameters
       N = new Range( source.N ).Named( "N" );
@@ -107,7 +109,6 @@ namespace PeriodicMixture {
       };
 
       // Print posteriors
-
       Console.WriteLine( "\nPosterior mixing:\n{0}\n", ie.Infer( mixture_weights ) );
       Console.WriteLine( "Estimated mean:\n{0}\n", ie.Infer( mixture_means ) );
       Console.WriteLine( "Estimated precision:\n{0}\n", ie.Infer( mixture_precisions ) );

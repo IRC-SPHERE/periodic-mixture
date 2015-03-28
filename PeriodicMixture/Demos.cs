@@ -22,7 +22,7 @@ namespace PeriodicMixture {
     public static void PeriodicSingle1() {
       var wm = new WrappedMixture {
         source = SingleSource, 
-        approximation_count = 1, 
+        approximation_count = 3, 
         mixture_count = 1, 
         period = period 
       };
