@@ -100,7 +100,7 @@ namespace PeriodicMixture {
       };
 
       wm.Infer(); 
-      wm.Print(); 
+      wm.Print(50); 
 
       Console.WriteLine( "Acounting for the wrapped nature in this mixture model seems to give more optimal results." + "\n\n\n\n\n" );
     }

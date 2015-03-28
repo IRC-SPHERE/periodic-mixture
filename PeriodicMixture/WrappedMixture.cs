@@ -108,8 +108,10 @@ namespace PeriodicMixture {
         ShowFactorGraph = false
       };
 
+      var posteriorMixing = ie.Infer<Dirichlet>(mixture_weights);
+
       // Print posteriors
-      Console.WriteLine( "\nPosterior mixing:\n{0}\n", ie.Infer( mixture_weights ) );
+	  Console.WriteLine( "\nPosterior mixing:\n{0}, mean = {1}\n", mixture_weights, posteriorMixing.GetMean() );
       Console.WriteLine( "Estimated mean:\n{0}\n", ie.Infer( mixture_means ) );
       Console.WriteLine( "Estimated precision:\n{0}\n", ie.Infer( mixture_precisions ) );
 
