@@ -4,6 +4,7 @@ using System.Linq;
 using MicrosoftResearch.Infer.Distributions;
 using MicrosoftResearch.Infer;
 using MicrosoftResearch.Infer.Maths;
+using Newtonsoft.Json;
 
 namespace PeriodicMixture {
   public class WrappedMixture {
@@ -36,6 +37,9 @@ namespace PeriodicMixture {
     }
 
     public void Infer() {
+      if ( approximation_count % 2 == 0 ) 
+        throw new Exception( "ERROR: approximation count should be odd (for symmetry about zero)" );
+
       // Dataset parameters
       N = new Range( source.N ).Named( "N" );
       data = Variable.Array<double>( N ).Named( "data" );
@@ -87,14 +91,14 @@ namespace PeriodicMixture {
         }
       }
 
-      // Break symmetry
+      // Break symmetry by evenly distributing means over the period
       var inity = new Gaussian [mixture_k.SizeAsInt];
       for ( int i = 0; i < mixture_k.SizeAsInt; ++i ) 
         inity[i] = Gaussian.FromMeanAndVariance( i * period / ( mixture_k.SizeAsInt ), 3 );
       mixture_means.InitialiseTo( Distribution<double>.Array( inity ) );
     }
 
-    public void Print( int numIterations = 50 ) {
+    public void Print( int numIterations = 10 ) {
       // The inference
       var ie = new InferenceEngine {
         Algorithm = new ExpectationPropagation(),
@@ -103,15 +107,18 @@ namespace PeriodicMixture {
       };
 
       // Print posteriors
-      Console.WriteLine( "Posterior mixing:\n{0}\n", ie.Infer( mixture_weights ) );
-      Console.WriteLine( "Posterior means:\n{0}\n", ie.Infer( mixture_means ) );
-      Console.WriteLine( "Posterior precs:\n{0}\n", ie.Infer( mixture_precisions ) );
 
-      Console.Write( "Means: " ); 
-      Utils.Print( source.Mean ); 
+      Console.WriteLine( "\nPosterior mixing:\n{0}\n", ie.Infer( mixture_weights ) );
+      Console.WriteLine( "Estimated mean:\n{0}\n", ie.Infer( mixture_means ) );
+      Console.WriteLine( "Estimated precision:\n{0}\n", ie.Infer( mixture_precisions ) );
 
-      Console.Write( "\nVariance: " ); 
-      Utils.Print( source.Variance );
+      Console.Write( "True mean: " ); 
+      Utils.Print( source.Mean, Formatting.None ); 
+
+      Console.Write( "True precision: " ); 
+      Utils.Print( source.Variance.Select( vv => 1.0 / vv ), Formatting.None );
+
+      Console.WriteLine(); 
     }
   }
 }

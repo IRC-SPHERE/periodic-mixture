@@ -56,6 +56,7 @@
     <Compile Include="SyntheticData\PeriodicSingle.cs" />
     <Compile Include="SyntheticData\PeriodicMixture.cs" />
     <Compile Include="WrappedMixture.cs" />
+    <Compile Include="Demos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
