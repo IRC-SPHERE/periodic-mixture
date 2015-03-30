@@ -32,7 +32,7 @@ namespace PeriodicMixture {
       data.ObservedValue = observedData; 
 
       var mixture_k = new Range( mixture_count ).Named( "mixture_k" ); 
-      var approximation_k = new Range( meanOffsets.Count() ).Named( "approximation_count" ); 
+      var approximation_k = new Range( approximation_count ).Named( "approximation_count" ); 
 
       var approximation_means = Variable.Array<double>( mixture_k ).Named( "approximation_means" ); 
       approximation_means[mixture_k] = Variable.GaussianFromMeanAndPrecision( 0.0, 1e-2 ).ForEach( mixture_k ); 
@@ -94,6 +94,7 @@ namespace PeriodicMixture {
     }
 
     public void Print( int numIterations = 5 ) {
+      Console.WriteLine( this.GetType().Name ); 
     }
   }
 }

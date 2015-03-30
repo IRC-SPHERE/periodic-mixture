@@ -13,13 +13,12 @@ namespace PeriodicMixture {
     static void Main( string [] args ) {
       var source = Demos.MixtureSource; 
       source.N = 1000; 
-      source.Mean = new [] { 10, 22.0 }; 
-      source.Variance = new [] { 4.0, 8.0 }; 
+      source.Mean = new [] { 3.0, 22 }; 
+      source.Variance = new [] { 4, 4.0 }; 
       source.Pk = new [] { 0.4, 0.6 }; 
 
       var data = source.Generate( "test.json" ); 
 
-      //var wm = new WrappedMixture {
       var wm = new BimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 3, 

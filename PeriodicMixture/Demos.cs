@@ -33,7 +33,7 @@ namespace PeriodicMixture {
     public static void PeriodicSingle1() {
       var data = SingleSource.Generate(); 
 
-      var wm = new WrappedMixture {
+      var wm = new BimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 1, 
         mixture_count = 1, 
@@ -41,7 +41,7 @@ namespace PeriodicMixture {
       };
 
       wm.Infer(); 
-      wm.Print(); 
+      Console.WriteLine( "{0}\n", SingleSource ); 
 
       Console.WriteLine( "With a single-component GMM, the moments are badly estimated. (if the mean was not near midnight, the approximation might be sufficient)" + "\n\n\n\n\n" );
     }
@@ -49,7 +49,7 @@ namespace PeriodicMixture {
     public static void PeriodicSingle2() {
       var data = SingleSource.Generate(); 
 
-      var wm = new WrappedMixture {
+      var wm = new BimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 3, 
         mixture_count = 1, 
@@ -57,7 +57,7 @@ namespace PeriodicMixture {
       };
 
       wm.Infer(); 
-      wm.Print(); 
+      Console.WriteLine( "{0}\n", SingleSource ); 
 
       Console.WriteLine( "By introducing the wrapped approximation, both moments are better estimated." + "\n\n\n\n\n" );
     }
@@ -65,7 +65,7 @@ namespace PeriodicMixture {
     public static void PeriodicSingle3() {
       var data = SingleSource.Generate(); 
 
-      var wm = new WrappedMixture {
+      var wm = new BimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 1, 
         mixture_count = 2, 
@@ -73,7 +73,7 @@ namespace PeriodicMixture {
       };
 
       wm.Infer(); 
-      wm.Print(); 
+      Console.WriteLine( "{0}\n", SingleSource ); 
 
       Console.WriteLine( "By approximating the wrapping as a mixture model (where we allow the model to place one component after and another before midnight), \nwe get better estimates, but the moments are still off because the wrapping wasn't accounted for." + "\n\n\n\n\n" );
     }
@@ -89,7 +89,7 @@ namespace PeriodicMixture {
 
       var data = source.Generate(); 
 
-      var wm = new WrappedMixture {
+      var wm = new BimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 3, 
         mixture_count = 1, 
@@ -97,7 +97,7 @@ namespace PeriodicMixture {
       };
 
       wm.Infer(); 
-      wm.Print(); 
+      Console.WriteLine( "{0}\n", source ); 
 
       Console.WriteLine( "Test it with large variance." + "\n\n\n\n\n" );
     }
@@ -124,7 +124,7 @@ namespace PeriodicMixture {
     public static void PeriodicMixture1() {
       var data = MixtureSource.Generate(); 
 
-      var wm = new WrappedMixture {
+      var wm = new BimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 1, 
         mixture_count = 2, 
@@ -132,7 +132,7 @@ namespace PeriodicMixture {
       };
 
       wm.Infer(); 
-      wm.Print(); 
+      Console.WriteLine( "{0}\n", MixtureSource ); 
 
       Console.WriteLine( "The training data here are samplled from a mixture model. If we learn a non-wrapped mixture,the moments are poorly approximated.." + "\n\n\n\n\n" );
     }
@@ -140,7 +140,7 @@ namespace PeriodicMixture {
     public static void PeriodicMixture2() {
       var data = MixtureSource.Generate(); 
 
-      var wm = new WrappedMixture {
+      var wm = new BimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 3, 
         mixture_count = 2, 
@@ -148,7 +148,7 @@ namespace PeriodicMixture {
       };
 
       wm.Infer(); 
-      wm.Print(); 
+      Console.WriteLine( "{0}\n", MixtureSource ); 
 
       Console.WriteLine( "Acounting for the wrapped nature in this mixture model seems to give more optimal results." + "\n\n\n\n\n" );
     }
