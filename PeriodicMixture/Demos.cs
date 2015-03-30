@@ -40,7 +40,7 @@ namespace PeriodicMixture {
         period = period 
       };
 
-      wm.Infer( "PeriodicSingle1.json" ); 
+      wm.Infer(); 
       wm.Print(); 
 
       Console.WriteLine( "With a single-component GMM, the moments are badly estimated. (if the mean was not near midnight, the approximation might be sufficient)" + "\n\n\n\n\n" );
@@ -56,7 +56,7 @@ namespace PeriodicMixture {
         period = period 
       };
 
-      wm.Infer( "PeriodicSingle2.json" ); 
+      wm.Infer(); 
       wm.Print(); 
 
       Console.WriteLine( "By introducing the wrapped approximation, both moments are better estimated." + "\n\n\n\n\n" );
@@ -72,7 +72,7 @@ namespace PeriodicMixture {
         period = period 
       };
 
-      wm.Infer( "PeriodicSingle3.json" ); 
+      wm.Infer(); 
       wm.Print(); 
 
       Console.WriteLine( "By approximating the wrapping as a mixture model (where we allow the model to place one component after and another before midnight), \nwe get better estimates, but the moments are still off because the wrapping wasn't accounted for." + "\n\n\n\n\n" );
@@ -96,8 +96,8 @@ namespace PeriodicMixture {
         period = period 
       };
 
-      wm.Infer( "PeriodicSingle4.json" ); 
-      wm.Print(50); 
+      wm.Infer(); 
+      wm.Print(); 
 
       Console.WriteLine( "Test it with large variance." + "\n\n\n\n\n" );
     }
@@ -131,7 +131,7 @@ namespace PeriodicMixture {
         period = period 
       };
 
-      wm.Infer( "PeriodicMixture1.json" ); 
+      wm.Infer(); 
       wm.Print(); 
 
       Console.WriteLine( "The training data here are samplled from a mixture model. If we learn a non-wrapped mixture,the moments are poorly approximated.." + "\n\n\n\n\n" );
@@ -147,7 +147,7 @@ namespace PeriodicMixture {
         period = period 
       };
 
-      wm.Infer( "PeriodicMixture2.json" ); 
+      wm.Infer(); 
       wm.Print(); 
 
       Console.WriteLine( "Acounting for the wrapped nature in this mixture model seems to give more optimal results." + "\n\n\n\n\n" );

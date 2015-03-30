@@ -88,12 +88,6 @@ namespace PeriodicMixture {
     }
 
     public void Print( int numIterations = 5 ) {
-      // The inference
-      var ie = new InferenceEngine {
-        Algorithm = new ExpectationPropagation(),
-        NumberOfIterations = numIterations,
-        ShowFactorGraph = false
-      };
 
     }
   }

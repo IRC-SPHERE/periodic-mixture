@@ -13,7 +13,7 @@ namespace PeriodicMixture {
     static void Main( string [] args ) {
       var source = Demos.MixtureSource; 
       source.N = 1000; 
-      source.Mean = new [] { 0, 6.0 }; 
+      source.Mean = new [] { 10, 22.0 }; 
       source.Variance = new [] { 4.0, 8.0 }; 
       source.Pk = new [] { 0.4, 0.6 }; 
 
@@ -30,7 +30,7 @@ namespace PeriodicMixture {
       wm.Infer(); 
 
       Console.WriteLine( source ); 
-      wm.Print( 50 ); 
+
 
 
 

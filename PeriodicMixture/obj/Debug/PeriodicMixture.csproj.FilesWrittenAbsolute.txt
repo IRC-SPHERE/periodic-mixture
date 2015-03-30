@@ -1,9 +1,0 @@
-/home/nt/periodicmixture/PeriodicMixture/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/home/nt/periodicmixture/PeriodicMixture/obj/Debug/PeriodicMixture.exe
-/home/nt/periodicmixture/PeriodicMixture/bin/Debug/Infer.Compiler.dll
-/home/nt/periodicmixture/PeriodicMixture/bin/Debug/Infer.Runtime.dll
-/home/nt/periodicmixture/PeriodicMixture/bin/Debug/Newtonsoft.Json.dll
-/home/nt/periodicmixture/PeriodicMixture/bin/Debug/PeriodicMixture.exe.config
-/home/nt/periodicmixture/PeriodicMixture/bin/Debug/PeriodicMixture.exe.mdb
-/home/nt/periodicmixture/PeriodicMixture/bin/Debug/PeriodicMixture.exe
-/home/nt/periodicmixture/PeriodicMixture/obj/Debug/PeriodicMixture.exe.mdb

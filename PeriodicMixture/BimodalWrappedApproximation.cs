@@ -80,8 +80,8 @@ namespace PeriodicMixture {
         Algorithm = new GibbsSampling(),
         //Algorithm = new ExpectationPropagation(), 
         //Algorithm = new VariationalMessagePassing(),
-        NumberOfIterations = 5000,
-        ShowFactorGraph = true
+        NumberOfIterations = 1000,
+        ShowFactorGraph = false
       };
 
       var posteriorMixing = ie.Infer<Dirichlet>( mixture_weights );
