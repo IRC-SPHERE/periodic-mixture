@@ -33,7 +33,7 @@ namespace PeriodicMixture {
     public static void PeriodicSingle1() {
       var data = SingleSource.Generate(); 
 
-      var wm = new BimodalWrappedApproximation {
+      var wm = new MultimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 1, 
         mixture_count = 1, 
@@ -49,7 +49,7 @@ namespace PeriodicMixture {
     public static void PeriodicSingle2() {
       var data = SingleSource.Generate(); 
 
-      var wm = new BimodalWrappedApproximation {
+      var wm = new MultimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 3, 
         mixture_count = 1, 
@@ -65,7 +65,7 @@ namespace PeriodicMixture {
     public static void PeriodicSingle3() {
       var data = SingleSource.Generate(); 
 
-      var wm = new BimodalWrappedApproximation {
+      var wm = new MultimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 1, 
         mixture_count = 2, 
@@ -89,7 +89,7 @@ namespace PeriodicMixture {
 
       var data = source.Generate(); 
 
-      var wm = new BimodalWrappedApproximation {
+      var wm = new MultimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 3, 
         mixture_count = 1, 
@@ -124,7 +124,7 @@ namespace PeriodicMixture {
     public static void PeriodicMixture1() {
       var data = MixtureSource.Generate(); 
 
-      var wm = new BimodalWrappedApproximation {
+      var wm = new MultimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 1, 
         mixture_count = 2, 
@@ -140,7 +140,7 @@ namespace PeriodicMixture {
     public static void PeriodicMixture2() {
       var data = MixtureSource.Generate(); 
 
-      var wm = new BimodalWrappedApproximation {
+      var wm = new MultimodalWrappedApproximation {
         observedData = data, 
         approximation_count = 3, 
         mixture_count = 2, 

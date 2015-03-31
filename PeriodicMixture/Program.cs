@@ -11,22 +11,25 @@ using Newtonsoft.Json;
 namespace PeriodicMixture {
   class Program {
     static void Main( string [] args ) {
-      var source = Demos.MixtureSource; 
-      source.N = 1000; 
-      source.Mean = new [] { 3.0, 22 }; 
-      source.Variance = new [] { 4, 4.0 }; 
-      source.Pk = new [] { 0.4, 0.6 }; 
+      var source = Demos.MixtureSource;
+      source.N = 1000;
+      source.Pk = new [] { 0.35, 0.65 }; 
+      source.Mean = new [] { 7.0, 0.0 }; 
+      source.Variance = new [] { 2.0, 8.0 }; 
 
-      var data = source.Generate( "test.json" ); 
+      var data = source.Generate();
 
-      var wm = new BimodalWrappedApproximation {
+      var wm = new MultimodalWrappedApproximation {
+        period = 24,
         observedData = data, 
         approximation_count = 3, 
         mixture_count = 2, 
-        period = 24 
+
+        algorithm = new GibbsSampling(),
+        NumberOfIterations= 2500
       };
 
-      wm.Infer(); 
+      wm.Infer( "test.json" ); 
 
       Console.WriteLine( source ); 
 

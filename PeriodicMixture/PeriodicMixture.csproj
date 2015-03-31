@@ -57,7 +57,7 @@
     <Compile Include="Demos.cs" />
     <Compile Include="SyntheticData\PeriodicData.cs" />
     <Compile Include="UnimodalWrappedApproximation.cs" />
-    <Compile Include="BimodalWrappedApproximation.cs" />
+    <Compile Include="MultimodalWrappedApproximation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -71,7 +71,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="SyntheticData\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

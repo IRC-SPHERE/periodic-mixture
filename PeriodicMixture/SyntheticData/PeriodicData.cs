@@ -66,9 +66,10 @@ namespace PeriodicMixture {
 
 
     public override string ToString() {
-      return string.Format("PeriodicData:\n  N         = {0}\n  Period    = {1}\n  Mean      = {2}\n  Precision = {3}\n  Pk        = {4}\n\n", 
-        N, Period, 
-        JsonConvert.SerializeObject( Mean ), 
+      return string.Format( "True parameters:\n  N         = {0}\n  Period    = {1}\n  Mean      = {2}\n  Variance  = {3}\n  Precision = {4}\n  Pk        = {5}\n\n", 
+        N, Period,
+        JsonConvert.SerializeObject( Mean ),
+        JsonConvert.SerializeObject( Variance ),
         JsonConvert.SerializeObject( Variance.Select( vv => 1.0 / vv ) ), 
         JsonConvert.SerializeObject( Pk ));
     }
