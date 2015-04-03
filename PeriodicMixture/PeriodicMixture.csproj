@@ -58,6 +58,9 @@
     <Compile Include="SyntheticData\PeriodicData.cs" />
     <Compile Include="UnimodalWrappedApproximation.cs" />
     <Compile Include="MultimodalWrappedApproximation.cs" />
+    <Compile Include="Meta.cs" />
+    <Compile Include="Data\HH101.cs" />
+    <Compile Include="Toy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -72,4 +75,7 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
 </Project>

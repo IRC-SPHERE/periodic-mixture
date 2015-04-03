@@ -9,16 +9,18 @@ using MicrosoftResearch.Infer.Maths;
 using Newtonsoft.Json;
 using System.IO;
 
+
+
 namespace PeriodicMixture {
-  class Program {
-    const string DataPath = "../../../Data/";
+  public class Toy {
+    static void TopMain( string [] args ) {
+      var source = Demos.MixtureSource;
+      source.N = 1000;
+      source.Pk = new [] { 0.35, 0.65 }; 
+      source.Mean = new [] { 7.0, 0.0 }; 
+      source.Variance = new [] { 2.0, 8.0 }; 
 
-    static void Main( string [] args ) {
-      var data = JsonConvert.DeserializeObject<double[]>( 
-        System.IO.File.ReadAllText( DataPath + "wash_lunch_dishes.json" )
-      ); 
-
-      Console.WriteLine( "{0} datapoints...", data.Count() ); 
+      var data = source.Generate();
 
       var wm = new MultimodalWrappedApproximation {
         period = 24,
@@ -26,11 +28,15 @@ namespace PeriodicMixture {
         approximation_count = 3, 
         mixture_count = 2, 
 
-        algorithm = new ExpectationPropagation(),
-        NumberOfIterations = 50
+        algorithm = new GibbsSampling(),
+        NumberOfIterations= 2500
       };
 
-      wm.Infer( "hh101.json" ); 
+      wm.Infer( "test.json" ); 
+
+      Console.WriteLine( source ); 
+
     }
   }
 }
+

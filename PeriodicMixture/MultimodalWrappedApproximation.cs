@@ -66,13 +66,14 @@ namespace PeriodicMixture {
           approximation_z [N] = Variable.DiscreteUniform( approximation_k );
 
           using ( Variable.Switch( approximation_z [N] ) ) {
-            if ( algorithm  is ExpectationPropagation )
-              Variable.ConstrainBetween( mixture_means [mixture_z [N]], 0.0, period );
-
             data [N] = Variable.GaussianFromMeanAndPrecision(
               ( mixture_means [mixture_z [N]] + approximation_meanOffsets [approximation_z [N]] ).Named( "approximation_offsetMean" ),
               mixture_precisions [mixture_z [N]]
             );
+
+            if ( algorithm  is ExpectationPropagation ) {
+              Variable.ConstrainBetween( mixture_means [mixture_z [N]], 0.0, period );
+            }
           }
         }
       }
